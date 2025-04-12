@@ -21,6 +21,9 @@ class TaskAdminForm(forms.ModelForm):
             self.fields['assigned_by'].initial = self.request.user
             self.fields['assigned_by'].disabled = True
 
+            # Exclude self from assigned_to
+            self.fields['assigned_to'].queryset = self.fields['assigned_to'].queryset.exclude(id=self.request.user.id)
+            
 class TaskAdmin(admin.ModelAdmin):
     form = TaskAdminForm
 
