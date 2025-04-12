@@ -8,6 +8,7 @@ class Task(models.Model):
         (1, 'Open'),
         (2, 'In Progress'),
         (3, 'Done'),
+        (4, 'Overdue'),
     )
 
     PRIORITY_CHOICES = (
